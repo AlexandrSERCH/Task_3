@@ -2,6 +2,9 @@ import allure
 import pytest
 from selenium import webdriver
 
+from helpers.api_client import create_user, delete_user
+from pages.account_profile_page import AccountProfilePage
+from selenium.webdriver import FirefoxOptions, ChromeOptions
 from pages.forgot_password_page import ForgotPasswordPage
 from pages.login_page import LoginPage
 from pages.main_page import MainPage
@@ -55,15 +58,42 @@ def reset_password_page(browser):
     return ResetPasswordPage(browser)
 
 
-'''
-Хук, который отлавливает момент падения теста и делает скриншот.
-Необходим, чтобы успеть сделать скриншот, если на экране, к примеру
-помешал поп-ап, на странице не видно необходимый элемент или элемент не отобразился и т.п.
-'''
+@pytest.fixture
+def account_profile_page(browser):
+    return AccountProfilePage(browser)
+
+
+@pytest.fixture
+def created_user():
+    created_user_data = create_user().user_data
+    created_user_token = create_user().token
+
+    yield created_user_data
+
+    delete_user(created_user_token)
+
+
+@pytest.fixture
+def user_is_auth(login_page, created_user):
+    login_page.open()
+
+    email = created_user["email"]
+    password = created_user["password"]
+    name = created_user["name"]
+
+    login_page.auth(email, password)
+
+    yield email, name
 
 
 @pytest.hookimpl(hookwrapper=True)
 def pytest_runtest_makereport(item, call):
+    """
+    Хук, который отлавливает момент падения теста и делает скриншот.
+    Необходим, чтобы успеть сделать скриншот, если на экране, к примеру
+    помешал поп-ап, на странице не видно необходимый элемент или элемент не отобразился и т.п.
+    """
+
     outcome = yield
     rep = outcome.get_result()
 
