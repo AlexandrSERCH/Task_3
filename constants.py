@@ -7,6 +7,11 @@ URLS = {
     "reset_passwrod_page": f"{BASE_URL}/reset-password",
 }
 
+API_ENDPOINTS = {
+    "create_user": f"{BASE_URL}/api/auth/register",
+    "delete_user": f"{BASE_URL}/api/auth/user"
+}
+
 
 def site_url():
     return URLS["site"]
@@ -22,3 +27,9 @@ def forgot_passwrod_url():
 
 def reset_passwrod_url():
     return URLS["reset_passwrod_page"]
+
+def create_user_endpoint():
+    return API_ENDPOINTS["create_user"]
+
+def delete_user_endpoint():
+    return API_ENDPOINTS["delete_user"]
