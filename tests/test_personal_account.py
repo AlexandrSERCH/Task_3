@@ -1,7 +1,5 @@
 import allure
 
-from conftest import account_profile_page
-
 
 @allure.epic("Личный кабинет")
 @allure.feature("Переключение между вкладками")
