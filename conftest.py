@@ -65,8 +65,9 @@ def account_profile_page(browser):
 
 @pytest.fixture
 def created_user():
-    created_user_data = create_user().user_data
-    created_user_token = create_user().token
+    response_create_user = create_user()
+    created_user_data = response_create_user.user_data
+    created_user_token = response_create_user.token
 
     yield created_user_data
 
