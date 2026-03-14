@@ -24,3 +24,4 @@ class LoginPage(BasePage):
         self._send_keys(EMAIL_FIELD, email)
         self._send_keys(PASSWORD_FIELD, password)
         self._click(LOGIN_BUTTON)
+        self._wait_for_url_not_contains("login")

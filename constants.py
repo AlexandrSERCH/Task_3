@@ -5,6 +5,8 @@ URLS = {
     "login_page": f"{BASE_URL}/login",
     "forgot_passwrod_page": f"{BASE_URL}/forgot-password",
     "reset_passwrod_page": f"{BASE_URL}/reset-password",
+    "order_feed": f"{BASE_URL}/feed",
+    "account_profile_page": f"{BASE_URL}/account/profile",
 }
 
 API_ENDPOINTS = {
@@ -28,8 +30,18 @@ def forgot_passwrod_url():
 def reset_passwrod_url():
     return URLS["reset_passwrod_page"]
 
+
+def order_feed_url():
+    return URLS["order_feed"]
+
+
+def account_profile_url():
+    return URLS["account_profile_page"]
+
+
 def create_user_endpoint():
     return API_ENDPOINTS["create_user"]
+
 
 def delete_user_endpoint():
     return API_ENDPOINTS["delete_user"]

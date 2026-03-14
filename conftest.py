@@ -8,6 +8,7 @@ from selenium.webdriver import FirefoxOptions, ChromeOptions
 from pages.forgot_password_page import ForgotPasswordPage
 from pages.login_page import LoginPage
 from pages.main_page import MainPage
+from pages.order_feed_page import OrderFeedPage
 from pages.reset_password_page import ResetPasswordPage
 from utlis.attach import attach_screenshot
 
@@ -29,7 +30,7 @@ def browser(request):
 
 # @pytest.fixture(scope="function", autouse=True)
 # def browser(request):
-#     driver = webdriver.Chrome()
+#     driver = webdriver.Firefox()
 #
 #     driver.maximize_window()
 #     yield driver
@@ -64,6 +65,11 @@ def account_profile_page(browser):
 
 
 @pytest.fixture
+def order_feed_page(browser):
+    return OrderFeedPage(browser)
+
+
+@pytest.fixture
 def created_user():
     response_create_user = create_user()
     created_user_data = response_create_user.user_data
@@ -85,6 +91,17 @@ def user_is_auth(login_page, created_user):
     login_page.auth(email, password)
 
     yield email, name
+
+
+@pytest.fixture
+def created_order(user_is_auth, main_page):
+    main_page.drag_first_ingredient_to_constructor()
+    main_page.drag_third_ingredient_to_constructor()
+    main_page.click_order_button()
+    order_number = main_page.get_order_modal_number()
+    main_page.close_order_confirmation_modal()
+
+    yield order_number
 
 
 @pytest.hookimpl(hookwrapper=True)
