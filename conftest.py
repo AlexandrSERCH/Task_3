@@ -4,7 +4,6 @@ from selenium import webdriver
 
 from helpers.api_client import create_user, delete_user
 from pages.account_profile_page import AccountProfilePage
-from selenium.webdriver import FirefoxOptions, ChromeOptions
 from pages.forgot_password_page import ForgotPasswordPage
 from pages.login_page import LoginPage
 from pages.main_page import MainPage
@@ -27,16 +26,6 @@ def browser(request):
 
     attach_screenshot(driver)
     driver.quit()
-
-# @pytest.fixture(scope="function", autouse=True)
-# def browser(request):
-#     driver = webdriver.Firefox()
-#
-#     driver.maximize_window()
-#     yield driver
-#
-#     attach_screenshot(driver)
-#     driver.quit()
 
 
 @pytest.fixture

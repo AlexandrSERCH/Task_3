@@ -1,8 +1,5 @@
-from asyncio import wait
-
 import allure
 from selenium.common import TimeoutException, StaleElementReferenceException
-from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.support.wait import WebDriverWait
@@ -66,7 +63,7 @@ class BasePage:
                 pass
         return []
 
-    @allure.step("Получить текст из атрибура 'value' по локатору: {locator}")
+    @allure.step("Получить текст из атрибута 'value' по локатору: {locator}")
     def _get_value(self, locator):
         return self.wait.until(EC.visibility_of_element_located(locator)).get_attribute("value")
 
