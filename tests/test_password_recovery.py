@@ -27,7 +27,7 @@ class TestPasswordRecovery:
     @allure.title("Переход на страницу восстановления пароля по гиперссылке 'Восстановить пароль'")
     def test_redirect_to_forgot_password_page_by_text_link(self, main_page, login_page, forgot_password_page):
         login_page.open()
-        login_page.click_recovey_password_text_link()
+        login_page.click_recovery_password_text_link()
         actual_title = forgot_password_page.get_title_text()
         expected_title = "Восстановление пароля"
 
@@ -50,12 +50,12 @@ class TestPasswordRecovery:
     def test_toggle_password_visibility_by_eye_icon(self, open_reset_password_page, reset_password_page):
         reset_password_page.send_password("123456qA")
 
-        reset_password_page.click_toogle_password_visability_button()
+        reset_password_page.click_toggle_password_visibility_button()
 
         with allure.step("Успешное отображение пароля"):
             reset_password_page.value_in_field_password_is_visible()
 
-        reset_password_page.click_toogle_password_visability_button()
+        reset_password_page.click_toggle_password_visibility_button()
 
         with allure.step("Успешная маскировка пароля"):
             reset_password_page.value_in_field_password_is_hidden()

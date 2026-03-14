@@ -16,7 +16,7 @@ class LoginPage(BasePage):
         assert self._is_visible(FORGOT_PASSWORD_TEXT_LINK)
 
     @allure.step("Нажать на гиперссылку 'Восстановить пароль'")
-    def click_recovey_password_text_link(self):
+    def click_recovery_password_text_link(self):
         self._click(FORGOT_PASSWORD_TEXT_LINK)
 
     @allure.step("Авторизоваться")

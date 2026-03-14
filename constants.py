@@ -3,8 +3,8 @@ BASE_URL = "https://stellarburgers.education-services.ru"
 URLS = {
     "site": f"{BASE_URL}",
     "login_page": f"{BASE_URL}/login",
-    "forgot_passwrod_page": f"{BASE_URL}/forgot-password",
-    "reset_passwrod_page": f"{BASE_URL}/reset-password",
+    "forgot_password_page": f"{BASE_URL}/forgot-password",
+    "reset_password_page": f"{BASE_URL}/reset-password",
     "order_feed": f"{BASE_URL}/feed",
     "account_profile_page": f"{BASE_URL}/account/profile",
 }
@@ -23,12 +23,12 @@ def login_page_url():
     return URLS["login_page"]
 
 
-def forgot_passwrod_url():
-    return URLS["forgot_passwrod_page"]
+def forgot_password_url():
+    return URLS["forgot_password_page"]
 
 
-def reset_passwrod_url():
-    return URLS["reset_passwrod_page"]
+def reset_password_url():
+    return URLS["reset_password_page"]
 
 
 def order_feed_url():

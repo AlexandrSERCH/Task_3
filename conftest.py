@@ -9,7 +9,7 @@ from pages.login_page import LoginPage
 from pages.main_page import MainPage
 from pages.order_feed_page import OrderFeedPage
 from pages.reset_password_page import ResetPasswordPage
-from utlis.attach import attach_screenshot
+from utils.attach import attach_screenshot
 
 
 @pytest.fixture(scope="function", autouse=True, params=["firefox", "chrome"])

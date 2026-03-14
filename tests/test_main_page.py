@@ -8,7 +8,7 @@ class TestMainPageNavigation:
     @allure.severity(allure.severity_level.CRITICAL)
     @allure.tag("UI", "regress", "Навигация")
     @allure.title("Переход по клику на 'Конструктор' из личного кабинета")
-    def test_redirect_to_constructor_from_account(self, user_is_auth, main_page, account_profile_page):
+    def test_redirect_to_constructor_from_account(self, user_is_auth, main_page):
         main_page.click_account_button_in_header()
         main_page.click_constructor_button_in_header()
 

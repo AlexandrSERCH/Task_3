@@ -1,5 +1,4 @@
 from dataclasses import dataclass
-from types import SimpleNamespace
 
 import pytest
 import requests

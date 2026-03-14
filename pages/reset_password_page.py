@@ -15,7 +15,7 @@ class ResetPasswordPage(BasePage):
         self._send_keys(PASSWORD_FIELD, text)
 
     @allure.step("Нажать на иконку показать/скрыть пароль")
-    def click_toogle_password_visability_button(self):
+    def click_toggle_password_visibility_button(self):
         self._click(TOGGLE_PASSWORD_VISIBILITY_BUTTON)
 
     @allure.step("Получить значение атрибута 'type' поля 'Пароль'")

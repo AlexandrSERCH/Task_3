@@ -11,7 +11,7 @@ class BuildUser:
         """Если не заполнить именованные аргументы, то поля заполнятся фейковыми данными"""
 
         return {
-            # uuid вместе faker-а, т.к. при параллаельном запуске может создаться один и тот же email
+            # uuid вместе faker-а, т.к. при параллельном запуске может создаться один и тот же email
             "email": email if email else f"{uuid4().hex[:8]}@test.com",
             "password": password if password else fake.password(length=8, special_chars=False),
             "name": name if name else fake.first_name()

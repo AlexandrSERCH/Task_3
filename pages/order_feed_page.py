@@ -34,16 +34,6 @@ class OrderFeedPage(BasePage):
     def get_today_counter(self) -> int:
         return int(self._get_text(TODAY_COUNTER))
 
-    @allure.step("Получить список номеров заказов в разделе 'В работе'")
-    def get_in_progress_order_numbers(self) -> list:
-        self.wait.until(
-            lambda d: any(
-                el.text and el.text != "Все текущие заказы готовы!"
-                for el in d.find_elements(*IN_PROGRESS_ORDER_NUMBERS)
-            )
-        )
-        return self._get_elements_texts(IN_PROGRESS_ORDER_NUMBERS)
-
     @allure.step("Ожидать появления заказа {order_number} в разделе 'В работе'")
     def wait_for_order_in_progress(self, order_number: str) -> bool:
         try:
