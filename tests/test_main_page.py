@@ -37,8 +37,10 @@ class TestIngredients:
         main_page.click_first_ingredient()
 
         main_page.success_visible_ingredient_modal()
-        modal_name = main_page.get_ingredient_modal_name()
-        assert ingredient_name == modal_name
+
+        with allure.step("Успешное отображение названия ингридиента в модальном окне"):
+            modal_name = main_page.get_ingredient_modal_name()
+            assert ingredient_name == modal_name
 
     @allure.severity(allure.severity_level.NORMAL)
     @allure.tag("UI", "regress", "Ингредиенты")
@@ -48,10 +50,14 @@ class TestIngredients:
         assert main_page.get_third_ingredient_counter() == 0
 
         main_page.drag_third_ingredient_to_constructor()
-        assert main_page.get_third_ingredient_counter() == 1
+
+        with allure.step("Успешное увелечение счётчика"):
+            assert main_page.get_third_ingredient_counter() == 1
 
         main_page.drag_third_ingredient_to_constructor()
-        assert main_page.get_third_ingredient_counter() == 2
+
+        with allure.step("Успешное увелечение счётчика"):
+            assert main_page.get_third_ingredient_counter() == 2
 
     @allure.severity(allure.severity_level.NORMAL)
     @allure.tag("UI", "regress", "Ингредиенты")
@@ -79,5 +85,6 @@ class TestOrder:
         order_number = int(main_page.get_order_modal_number())
         assert order_number > 9999
 
-        actual_text_in_order_modal = main_page.get_order_modal_text()
-        assert "Ваш заказ начали готовить" in actual_text_in_order_modal
+        with allure.step("Успешное отображение модального окна об оформлении заказа"):
+            actual_text_in_order_modal = main_page.get_order_modal_text()
+            assert "Ваш заказ начали готовить" in actual_text_in_order_modal

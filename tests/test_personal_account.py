@@ -15,8 +15,9 @@ class TestPersonalAccount:
         actual_name = account_profile_page.get_text_from_name_field()
         expected_login, expected_name = user_is_auth
 
-        assert expected_login == actual_login
-        assert expected_name == actual_name
+        with allure.step("Успешный переход на страницу 'Профиль' с отображением почты и имени в полях"):
+            assert expected_login == actual_login
+            assert expected_name == actual_name
 
     @allure.severity(allure.severity_level.CRITICAL)
     @allure.tag("UI", "regress", "ЛК")
@@ -27,11 +28,12 @@ class TestPersonalAccount:
 
         actual_url = account_profile_page.get_current_url()
 
-        assert "account/order-history" in actual_url
+        with allure.step("Успешный переход на страницу 'История заказов'"):
+            assert "account/order-history" in actual_url
 
     @allure.severity(allure.severity_level.CRITICAL)
     @allure.tag("UI", "regress", "ЛК")
-    @allure.title("Проверить выход из аккауета")
+    @allure.title("Проверить выход из аккаунта")
     def test_logout(self, user_is_auth, main_page, account_profile_page, login_page):
         main_page.click_account_button_in_header()
         account_profile_page.click_logout()

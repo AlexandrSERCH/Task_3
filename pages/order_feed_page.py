@@ -18,7 +18,7 @@ class OrderFeedPage(BasePage):
     def click_first_order(self):
         self._click(FIRST_ORDER_CARD)
 
-    @allure.step("Проверить отображение модального окна с деталями заказа")
+    @allure.step("Успешное отображение модального окна с деталями заказа")
     def success_visible_order_details_modal(self):
         assert self._is_visible(ORDER_DETAILS_MODAL)
 

@@ -51,7 +51,11 @@ class TestPasswordRecovery:
         reset_password_page.send_password("123456qA")
 
         reset_password_page.click_toogle_password_visability_button()
-        reset_password_page.value_in_field_password_is_visible()
+
+        with allure.step("Успешное отображение пароля"):
+            reset_password_page.value_in_field_password_is_visible()
 
         reset_password_page.click_toogle_password_visability_button()
-        reset_password_page.value_in_field_password_is_hidden()
+
+        with allure.step("Успешная маскировка пароля"):
+            reset_password_page.value_in_field_password_is_hidden()

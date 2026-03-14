@@ -36,8 +36,11 @@ class TestOrderFeedCounters:
         main_page.close_order_confirmation_modal()
         order_feed_page.open()
 
-        assert order_feed_page.get_all_time_counter() > all_time_before
-        assert order_feed_page.get_today_counter() > today_before
+        with allure.step("Успешное увелечение счётика 'Выполнено за все время' после создания нового заказа"):
+            assert order_feed_page.get_all_time_counter() > all_time_before
+
+        with allure.step("Успешное увелечение счётика 'Выполнено за сегодня' после создания нового заказа"):
+            assert order_feed_page.get_today_counter() > today_before
 
 
 @allure.epic("Лента заказов")
@@ -55,7 +58,8 @@ class TestUserOrdersInFeed:
         order_feed_page.open()
         feed_order_numbers = order_feed_page.get_all_order_numbers()
 
-        assert first_order_number in feed_order_numbers
+        with allure.step("Успешное отображение номера созданного заказа в ленте заказов"):
+            assert first_order_number in feed_order_numbers
 
     @allure.severity(allure.severity_level.CRITICAL)
     @allure.tag("UI", "regress", "Лента заказов")
@@ -68,4 +72,5 @@ class TestUserOrdersInFeed:
 
         order_feed_page.open()
 
-        assert order_feed_page.wait_for_order_in_progress(order_number)
+        with allure.step("Успешное отображение номера созданного заказа в разделе 'В работе'"):
+            assert order_feed_page.wait_for_order_in_progress(order_number)
